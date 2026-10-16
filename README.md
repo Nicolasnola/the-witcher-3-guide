@@ -34,8 +34,8 @@ Guia interativo e Progressive Web App (PWA) focado na conquista de **100% dos tr
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/SEU_USUARIO/the-witcher-3.git
-cd the-witcher-3
+git clone https://github.com/Nicolasnola/the-witcher-3-guide.git
+cd the-witcher-3-guide
 ```
 
 2. Instale as dependências:
