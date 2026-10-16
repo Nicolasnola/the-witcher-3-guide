@@ -1,24 +1,41 @@
 # 🐺 The Witcher 3: Wild Hunt — Guia Definitivo 100% Platina & 1000G
 
-Guia interativo completo de Platina e 1000G para **The Witcher 3: Wild Hunt** (Jogo Base) e suas duas expansões aclamadas: **Hearts of Stone** e **Blood and Wine**.
+Guia interativo e Progressive Web App (PWA) focado na conquista de **100% dos troféus e conquistas** de **The Witcher 3: Wild Hunt**, incluindo as expansões **Hearts of Stone** e **Blood and Wine**.
 
 ---
 
-## ⚡ Tecnologias Utilizadas
+## ✨ Funcionalidades
+
+- **Cobertura Total (79 Troféus)**:
+  - 🐺 **Jogo Base**: 53 Troféus (com a cobiçada Platina)
+  - 🪓 **Hearts of Stone**: 13 Conquistas
+  - 🍷 **Blood and Wine**: 13 Conquistas
+- **🗺️ Roteiro Passo a Passo (Roadmap)**: Organizado cronologicamente por regiões e atos para evitar spoilers e perda de missões.
+- **⚠️ Central de Perdíveis (Missables Hub)**: Destaque com alerta visual para decisões de diálogos irreversíveis, cartas de Gwent únicas e pontos sem volta (como a *Ilha das Brumas*).
+- **🃏 Gwent & Contratos**: Checklist interativo dos 22 contratos de monstros (*Geralt: O Profissional*) e estratégias do baralho dos Reinos do Norte.
+- **⚔️ Marcha da Morte & Builds**: Dicas de sobrevivência para a dificuldade máxima, uso do escudo ativo de Quen e mapa dos Locais de Poder em Pomar Branco.
+- **📲 Aplicativo PWA (Mobile Ready)**: Totalmente responsivo para celulares, instalável no Android e iOS como app nativo e com funcionamento offline via Service Worker.
+- **💾 Persistência & Backup**: Progresso salvo automaticamente no navegador (`localStorage`) com opção de Exportar e Importar backup em JSON.
+
+---
+
+## ⚡ Tecnologias
+
 - **React 19**
-- **Vite 8**
-- **Tailwind CSS v4**
-- **Lucide Icons**
-- **Canvas Confetti**
-- **LocalStorage API** (para persistência offline e local no navegador)
+- **Vite**
+- **Tailwind CSS**
+- **Lucide React** (Ícones)
+- **Canvas Confetti** (Comemoração de 100%)
+- **Service Worker & Web App Manifest** (Suporte PWA)
 
 ---
 
-## 🚀 Como Rodar Localmente
+## 🚀 Como Executar Localmente
 
-1. Clone ou baixe o repositório:
+1. Clone o repositório:
 ```bash
-cd "the Witcher 3"
+git clone https://github.com/SEU_USUARIO/the-witcher-3.git
+cd the-witcher-3
 ```
 
 2. Instale as dependências:
@@ -38,45 +55,7 @@ http://localhost:5173
 
 ---
 
-## ☁️ Como Fazer o Deploy Gratuito na Vercel
+## 📜 Créditos
 
-O projeto já está 100% configurado com o arquivo `vercel.json` pronto para produção. Você tem duas formas fáceis e gratuitas de colocar o site no ar:
-
-### Opção 1: Via GitHub (Recomendado & Automático)
-1. Suba este projeto para um repositório no seu [GitHub](https://github.com/):
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: Guia completo The Witcher 3 + DLCs"
-   git branch -M main
-   git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-   git push -u origin main
-   ```
-2. Acesse [vercel.com](https://vercel.com/) e faça login (pode usar sua conta do GitHub).
-3. No painel da Vercel, clique em **"Add New..."** → **"Project"**.
-4. Selecione o repositório que você acabou de subir e clique em **"Import"**.
-5. As configurações de Build (`vite build`) e Output (`dist`) serão detectadas automaticamente pelo `vercel.json`.
-6. Clique no botão azul **"Deploy"**!
-7. Em menos de 1 minuto seu site estará online com domínio gratuito `.vercel.app` e SSL/HTTPS automático!
-
----
-
-### Opção 2: Direto pelo Terminal via Vercel CLI
-Se não quiser usar o GitHub agora e preferir publicar direto do seu computador:
-
-1. Abra o terminal na pasta do projeto e execute:
-   ```bash
-   npx vercel
-   ```
-2. O assistente fará algumas perguntas rápidas:
-   - *Set up and deploy?* Digite **`y`** (Yes) e aperte Enter.
-   - *Which scope?* Aperte Enter para confirmar sua conta.
-   - *Link to existing project?* Digite **`n`** (No).
-   - *What's your project's name?* Aperte Enter ou digite um nome como `witcher3-guia-platina`.
-   - *In which directory is your code located?* Aperte Enter (`./`).
-3. O deploy será feito imediatamente e o terminal fornecerá seu link público no ar!
-
----
-
-## 📜 Créditos & Conteúdo
-Estratégias de troféus e checklists elaborados com base na documentação oficial e no guia da [GameBlast](https://www.gameblast.com.br/2015/06/the-witcher-3-guia-trofeus-conquistas.html).
+Estratégias de troféus e roteiros baseados na documentação e no guia da [GameBlast](https://www.gameblast.com.br/2015/06/the-witcher-3-guia-trofeus-conquistas.html).  
+The Witcher 3: Wild Hunt é uma marca registrada da **CD PROJEKT RED**.
