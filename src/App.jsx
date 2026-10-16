@@ -12,6 +12,7 @@ import {
   Eye,
   Layers,
   Award,
+  Smartphone,
 } from 'lucide-react';
 import { trophies as baseTrophies, guideSteps as baseGuideSteps, missablesData as baseMissables } from './data';
 import {
@@ -32,6 +33,7 @@ import GwentContractsTab from './components/GwentContractsTab';
 import DeathMarchTab from './components/DeathMarchTab';
 import DlcSpecialTab from './components/DlcSpecialTab';
 import ResetModal from './components/ResetModal';
+import InstallModal from './components/InstallModal';
 
 export default function App() {
   // Active Expansion Level: 'base' | 'hos' | 'bw'
@@ -121,6 +123,45 @@ export default function App() {
     confirmText: '',
     onConfirm: () => {},
   });
+
+  // PWA Install Prompt State
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isInstallModalOpen, setIsInstallModalOpen] = useState(false);
+  const [isInstalled, setIsInstalled] = useState(false);
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+
+    window.addEventListener('appinstalled', () => {
+      setIsInstalled(true);
+      setDeferredPrompt(null);
+    });
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsInstalled(true);
+    }
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setIsInstalled(true);
+      }
+      setDeferredPrompt(null);
+    } else {
+      setIsInstallModalOpen(true);
+    }
+  };
 
   // Save states to LocalStorage
   useEffect(() => {
@@ -421,8 +462,20 @@ export default function App() {
               })}
             </div>
 
-            {/* Global Total Mastery Pill */}
+            {/* Actions & PWA Install Button */}
             <div className="flex items-center gap-2">
+              <button
+                id="pwa-install-btn"
+                onClick={handleInstallClick}
+                title="Instalar no celular (Android / iOS)"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#2a1c12] to-[#1a121f] hover:from-[#3d2719] hover:to-[#281b30] text-[#c8a84e] border border-[#594228] text-xs font-bold transition-all hover:scale-105 shadow-md shadow-[#c8a84e]/10 active:scale-95"
+              >
+                <Smartphone className="w-3.5 h-3.5 text-[#c8a84e]" />
+                <span className="hidden sm:inline">{isInstalled ? 'App Instalado' : 'Instalar App'}</span>
+                <span className="sm:hidden">{isInstalled ? 'App' : 'Instalar'}</span>
+              </button>
+
+              {/* Global Total Mastery Pill */}
               <div
                 className="px-3 py-1 rounded-full bg-[#18141b] border border-[#362b20] text-xs font-semibold flex items-center gap-1.5 shadow-sm"
                 title={`Progresso Geral da Franquia: ${totalMastery} de ${totalAvailable} Conquistas`}
@@ -734,6 +787,12 @@ export default function App() {
         confirmText={modalState.confirmText}
         onConfirm={modalState.onConfirm}
         onClose={() => setModalState((prev) => ({ ...prev, isOpen: false }))}
+      />
+
+      {/* PWA Install Instructions Modal */}
+      <InstallModal
+        isOpen={isInstallModalOpen}
+        onClose={() => setIsInstallModalOpen(false)}
       />
     </div>
   );
