@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+@theme {
+  --color-witcher-dark: #0a0a0f;
+  --color-witcher-darker: #060609;
+  --color-witcher-card: #12121a;
+  --color-witcher-card-hover: #1a1a25;
+  --color-witcher-border: #2a2a3a;
+  --color-witcher-gold: #c8a84e;
+  --color-witcher-gold-light: #e0c878;
+  --color-witcher-gold-dark: #8a6d2b;
+  --color-witcher-red: #c0392b;
+  --color-witcher-red-light: #e74c3c;
+  --color-witcher-silver: #95a5a6;
+  --color-witcher-bronze: #cd7f32;
+  --color-witcher-text: #e8e6e3;
+  --color-witcher-text-dim: #8a8a9a;
+  --color-witcher-accent: #1e6f5c;
+  --color-witcher-accent-light: #289672;
+  --color-witcher-blue: #2980b9;
+  --color-witcher-purple: #8e44ad;
+  
+  --font-witcher: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/cinzel/v23/8vIU7ww63mVu7gtR-kwKxNvkNOjw-tbnTYrvDE5ZdqU.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/cinzel/v23/8vIU7ww63mVu7gtR-kwKxNvkNOjw-uTgTYrvDE5ZdqU.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjQ.woff2) format('woff2');
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-witcher-gold-dark) var(--color-witcher-darker);
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-witcher-darker);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-witcher-gold-dark);
+  border-radius: 3px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-witcher-dark);
+  color: var(--color-witcher-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Witcher-style ornamental borders */
+.witcher-ornament {
+  position: relative;
+}
+
+.witcher-ornament::before,
+.witcher-ornament::after {
+  content: '◆';
+  color: var(--color-witcher-gold);
+  font-size: 8px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.witcher-ornament::before {
+  left: -16px;
+}
+
+.witcher-ornament::after {
+  right: -16px;
+}
+
+/* Glow animations */
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(200, 168, 78, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(200, 168, 78, 0.4); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Checked item styling */
+.checked-item {
+  text-decoration: line-through;
+  opacity: 0.45;
+  transition: all 0.3s ease;
+}
+
+/* Custom checkbox styling */
+.custom-checkbox {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-witcher-gold-dark);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.custom-checkbox:hover {
+  border-color: var(--color-witcher-gold);
+  box-shadow: 0 0 8px rgba(200, 168, 78, 0.3);
+}
+
+.custom-checkbox:checked {
+  background: var(--color-witcher-gold);
+  border-color: var(--color-witcher-gold);
+}
+
+.custom-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-witcher-dark);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Progress bar animation */
+.progress-bar-fill {
+  background: linear-gradient(90deg, var(--color-witcher-gold-dark), var(--color-witcher-gold), var(--color-witcher-gold-light));
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Trophy card hover glow */
+.trophy-card {
+  transition: all 0.3s ease;
+}
+
+.trophy-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(200, 168, 78, 0.15);
+}
+
+/* Tab active indicator */
+.tab-active {
+  position: relative;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-witcher-gold), transparent);
+}
+
+/* Background particle effect */
+.bg-particles {
+  background-image: 
+    radial-gradient(1px 1px at 20% 30%, rgba(200, 168, 78, 0.15), transparent),
+    radial-gradient(1px 1px at 40% 70%, rgba(200, 168, 78, 0.1), transparent),
+    radial-gradient(1px 1px at 80% 40%, rgba(200, 168, 78, 0.12), transparent),
+    radial-gradient(1px 1px at 60% 80%, rgba(200, 168, 78, 0.08), transparent);
+}
+
+/* Search input styling */
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-witcher-gold);
+  box-shadow: 0 0 0 3px rgba(200, 168, 78, 0.15);
+}
+
+/* Category filter buttons */
+.filter-btn {
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  transform: scale(1.02);
+}
+
+.filter-btn.active {
+  background: var(--color-witcher-gold);
+  color: var(--color-witcher-dark);
+  font-weight: 600;
+}
+
+/* Guide step sections */
+.guide-section {
+  border-left: 2px solid var(--color-witcher-border);
+  transition: border-color 0.3s ease;
+}
+
+.guide-section:hover {
+  border-left-color: var(--color-witcher-gold-dark);
+}
+
+/* Spoiler text */
+.spoiler-text {
+  background: var(--color-witcher-border);
+  color: var(--color-witcher-border);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.spoiler-text.revealed {
+  background: rgba(200, 168, 78, 0.1);
+  color: var(--color-witcher-text);
+}
+
+/* Missable warning */
+.missable-warning {
+  animation: goldPulse 2s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .custom-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+}
