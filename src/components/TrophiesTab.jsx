@@ -103,12 +103,12 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
 
         {/* Row 2: Category Filter Pills */}
         <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#201a14]">
-          <span className="text-xs text-[#807362] mr-1 flex items-center gap-1">
-            <Filter className="w-3 h-3" /> Categoria:
+          <span className="text-xs text-[#807362] mr-1 flex items-center gap-1 font-medium">
+            <Filter className="w-3.5 h-3.5" /> Categoria:
           </span>
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
               selectedCategory === 'all'
                 ? 'bg-[#c8a84e] text-[#08070a] shadow-sm'
                 : 'bg-[#18141a] text-[#a49683] hover:bg-[#251e27] border border-[#362b20]'
@@ -118,13 +118,13 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
           </button>
           <button
             onClick={() => setSelectedCategory('missable')}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1 ${
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 ${
               selectedCategory === 'missable'
                 ? 'bg-[#e74c3c] text-white shadow-sm'
                 : 'bg-[#221314] text-[#e74c3c] hover:bg-[#341618] border border-[#522020]'
             }`}
           >
-            <AlertTriangle className="w-3 h-3" /> Perdíveis ({trophies.filter((t) => t.missable).length})
+            <AlertTriangle className="w-3.5 h-3.5" /> Perdíveis ({trophies.filter((t) => t.missable).length})
           </button>
           {Object.entries(CATEGORY_INFO).map(([catKey, info]) => {
             if (catKey === TROPHY_CATEGORIES.MISSABLE) return null;
@@ -133,9 +133,9 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
               <button
                 key={catKey}
                 onClick={() => setSelectedCategory(catKey)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                   selectedCategory === catKey
-                    ? 'bg-[#c8a84e] text-[#08070a] shadow-sm'
+                    ? 'bg-[#c8a84e] text-[#08070a] shadow-sm font-semibold'
                     : 'bg-[#18141a] text-[#a49683] hover:bg-[#251e27] border border-[#362b20]'
                 }`}
               >
@@ -146,25 +146,25 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
         </div>
 
         {/* Row 3: Status & Rarity Filters + Expand All */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[#201a14] text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-2.5 border-t border-[#201a14] text-xs">
           <div className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-1.5">
-              <span className="text-[#807362]">Status:</span>
+              <span className="text-[#807362] font-medium">Status:</span>
               <button
                 onClick={() => setSelectedStatus('all')}
-                className={`px-2 py-0.5 rounded ${selectedStatus === 'all' ? 'text-[#c8a84e] font-bold' : 'text-[#8a7e6e] hover:text-[#e0d6c7]'}`}
+                className={`px-2.5 py-1 rounded text-xs transition-colors ${selectedStatus === 'all' ? 'text-[#c8a84e] font-bold bg-[#241c14]' : 'text-[#8a7e6e] hover:text-[#e0d6c7]'}`}
               >
                 Todos
               </button>
               <button
                 onClick={() => setSelectedStatus('pending')}
-                className={`px-2 py-0.5 rounded ${selectedStatus === 'pending' ? 'text-[#c8a84e] font-bold' : 'text-[#8a7e6e] hover:text-[#e0d6c7]'}`}
+                className={`px-2.5 py-1 rounded text-xs transition-colors ${selectedStatus === 'pending' ? 'text-[#c8a84e] font-bold bg-[#241c14]' : 'text-[#8a7e6e] hover:text-[#e0d6c7]'}`}
               >
                 Pendentes
               </button>
               <button
                 onClick={() => setSelectedStatus('completed')}
-                className={`px-2 py-0.5 rounded ${selectedStatus === 'completed' ? 'text-[#2ecc71] font-bold' : 'text-[#8a7e6e] hover:text-[#e0d6c7]'}`}
+                className={`px-2.5 py-1 rounded text-xs transition-colors ${selectedStatus === 'completed' ? 'text-[#2ecc71] font-bold bg-[#142618]' : 'text-[#8a7e6e] hover:text-[#e0d6c7]'}`}
               >
                 Conquistados
               </button>
@@ -173,10 +173,10 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
             <div className="h-3 w-[1px] bg-[#332b21] hidden sm:block"></div>
 
             <div className="flex items-center gap-1.5">
-              <span className="text-[#807362]">Raridade:</span>
+              <span className="text-[#807362] font-medium">Raridade:</span>
               <button
                 onClick={() => setSelectedRarity('all')}
-                className={`px-1.5 py-0.5 ${selectedRarity === 'all' ? 'text-[#c8a84e] font-bold' : 'text-[#8a7e6e]'}`}
+                className={`px-2 py-1 rounded text-xs ${selectedRarity === 'all' ? 'text-[#c8a84e] font-bold bg-[#241c14]' : 'text-[#8a7e6e]'}`}
               >
                 Todas
               </button>
@@ -184,12 +184,12 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
                 <button
                   key={r.label}
                   onClick={() => setSelectedRarity(r.label)}
-                  className={`px-1.5 py-0.5 flex items-center gap-0.5 ${
-                    selectedRarity.toLowerCase() === r.label.toLowerCase() ? 'font-bold underline' : 'text-[#8a7e6e]'
+                  className={`px-2 py-1 rounded text-xs flex items-center gap-1 transition-colors ${
+                    selectedRarity.toLowerCase() === r.label.toLowerCase() ? 'font-bold underline bg-[#241c14]' : 'text-[#8a7e6e]'
                   }`}
                   style={{ color: selectedRarity.toLowerCase() === r.label.toLowerCase() ? r.color : undefined }}
                 >
-                  {r.icon} {r.label}
+                  <span>{r.icon}</span> <span>{r.label}</span>
                 </button>
               ))}
             </div>
@@ -198,14 +198,14 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
           <div className="flex items-center gap-2">
             <button
               onClick={expandAllTips}
-              className="text-[#c8a84e] hover:underline flex items-center gap-1"
+              className="text-[#c8a84e] hover:underline flex items-center gap-1 py-1 font-medium"
             >
               Expandir Todas Dicas
             </button>
             <span className="text-[#4b3f30]">|</span>
             <button
               onClick={collapseAllTips}
-              className="text-[#8a7e6e] hover:text-[#fff]"
+              className="text-[#8a7e6e] hover:text-[#fff] py-1 font-medium"
             >
               Recolher
             </button>
@@ -219,7 +219,7 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
           Exibindo <strong className="text-[#e3d7c5]">{filteredTrophies.length}</strong> de {trophies.length} troféus
         </span>
         {filteredTrophies.length === 0 && (
-          <span className="text-[#e74c3c]">Nenhum troféu corresponde aos filtros selecionados.</span>
+          <span className="text-[#e74c3c] font-semibold">Nenhum troféu corresponde aos filtros selecionados.</span>
         )}
       </div>
 
@@ -241,49 +241,50 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
                   : 'bg-[#110f14]/90 border-[#2e261e] hover:border-[#52412e]'
               }`}
             >
-              <div className="p-4 md:p-5 flex items-start gap-4">
-                {/* Interactive Checkbox */}
+              <div className="p-4 md:p-5 flex items-start gap-3.5 sm:gap-4">
+                {/* Interactive Checkbox - Enhanced touch target on mobile */}
                 <button
                   onClick={() => onToggleTrophy(trophy.id)}
                   title={isDone ? 'Marcar como não conquistado' : 'Marcar como conquistado'}
-                  className="mt-0.5 flex-shrink-0 transition-transform active:scale-90"
+                  className="mt-0.5 flex-shrink-0 transition-transform active:scale-90 p-1 -m-1 touch-manipulation focus:outline-none"
                 >
                   {isDone ? (
-                    <div className="w-6 h-6 rounded bg-[#2ecc71] flex items-center justify-center text-[#08070a] shadow-lg shadow-[#2ecc71]/20">
-                      <CheckCircle className="w-4 h-4 stroke-[3]" />
+                    <div className="w-7 h-7 sm:w-6 sm:h-6 rounded-lg bg-[#2ecc71] flex items-center justify-center text-[#08070a] shadow-lg shadow-[#2ecc71]/20">
+                      <CheckCircle className="w-4.5 h-4.5 sm:w-4 sm:h-4 stroke-[3]" />
                     </div>
                   ) : (
-                    <div className="w-6 h-6 rounded border-2 border-[#544331] hover:border-[#c8a84e] bg-[#08070a] flex items-center justify-center transition-colors">
-                      <Circle className="w-3 h-3 text-transparent hover:text-[#c8a84e]/30" />
+                    <div className="w-7 h-7 sm:w-6 sm:h-6 rounded-lg border-2 border-[#544331] hover:border-[#c8a84e] bg-[#08070a] flex items-center justify-center transition-colors">
+                      <Circle className="w-3.5 h-3.5 sm:w-3 sm:h-3 text-transparent hover:text-[#c8a84e]/30" />
                     </div>
                   )}
                 </button>
 
                 {/* Trophy Details */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2">
                     {/* Rarity Tag */}
                     <span
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold border"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold border"
                       style={{
                         color: trophy.rarity.color,
                         borderColor: `${trophy.rarity.color}33`,
                         backgroundColor: `${trophy.rarity.color}15`,
                       }}
                     >
-                      {trophy.rarity.icon} {trophy.rarity.label}
+                      <span className="text-sm leading-none">{trophy.rarity.icon}</span>
+                      <span>{trophy.rarity.label}</span>
                     </span>
 
                     {/* Missable Tag */}
                     {trophy.missable && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold text-[#e74c3c] bg-[#3a1515] border border-[#6b2525] animate-pulse">
-                        <AlertTriangle className="w-3 h-3" /> PERDÍVEL
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold text-[#e74c3c] bg-[#3a1515] border border-[#6b2525] animate-pulse">
+                        <AlertTriangle className="w-3.5 h-3.5" /> PERDÍVEL
                       </span>
                     )}
 
                     {/* Category Tag */}
                     <span
-                      className="px-2 py-0.5 rounded text-[11px] border"
+                      className="px-2.5 py-1 rounded-md text-xs font-medium border"
                       style={{
                         color: catInfo.color,
                         backgroundColor: catInfo.bg,
@@ -296,13 +297,13 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
 
                   {/* Title & Official Description */}
                   <h3
-                    className={`text-lg font-bold tracking-wide font-['Cinzel',serif] ${
+                    className={`text-base sm:text-lg font-bold tracking-wide font-['Cinzel',serif] ${
                       isDone ? 'line-through text-[#6e8574]' : 'text-[#f5ede0]'
                     }`}
                   >
                     {trophy.name}
                   </h3>
-                  <p className="text-sm text-[#b2a493] mt-0.5 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#c0b2a2] mt-1 leading-relaxed">
                     {trophy.description}
                   </p>
 
@@ -310,17 +311,17 @@ export default function TrophiesTab({ trophies, completedTrophies, onToggleTroph
                   <div className="mt-3">
                     <button
                       onClick={() => toggleTip(trophy.id)}
-                      className="flex items-center gap-1.5 text-xs font-semibold text-[#c8a84e] hover:text-[#ebd696] transition-colors py-1"
+                      className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#c8a84e] hover:text-[#ebd696] transition-colors py-1.5"
                     >
-                      <BookOpen className="w-3.5 h-3.5" />
+                      <BookOpen className="w-4 h-4" />
                       <span>{isExpanded ? 'Ocultar Dica do Bruxo' : 'Ver Dica Detalhada de Platina'}</span>
-                      {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                      {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                     </button>
 
                     {isExpanded && (
-                      <div className="mt-2.5 p-3.5 rounded-lg bg-[#08070a]/90 border border-[#3b3021] text-xs text-[#d6c9b6] leading-relaxed space-y-1.5 animate-slide-down shadow-inner">
-                        <div className="flex items-center gap-1.5 font-bold text-[#c8a84e] uppercase tracking-wider text-[10px]">
-                          <Sparkles className="w-3 h-3" /> Estratégia Recomendada (GameBlast):
+                      <div className="mt-2.5 p-3.5 sm:p-4 rounded-xl bg-[#08070a]/90 border border-[#3b3021] text-xs sm:text-sm text-[#dfd2bf] leading-relaxed space-y-2 animate-slide-down shadow-inner">
+                        <div className="flex items-center gap-1.5 font-bold text-[#c8a84e] uppercase tracking-wider text-xs">
+                          <Sparkles className="w-3.5 h-3.5" /> Estratégia Recomendada (GameBlast):
                         </div>
                         <p>{trophy.tip}</p>
                       </div>

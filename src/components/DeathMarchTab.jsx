@@ -39,20 +39,20 @@ export default function DeathMarchTab({ completedTrophies, onToggleTrophy }) {
         <div>
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-widest text-[#f5b041]">
-              Troféu de Ouro: Andou pelo Caminho
+              Troféu de Ouro: Seguiu o Caminho
             </span>
           </div>
           <h2 className="text-xl md:text-2xl font-bold text-[#f5ede0] font-['Cinzel',serif] mt-1">
             MANUAL DE SOBREVIVÊNCIA NA MARCHA DA MORTE
           </h2>
-          <p className="text-xs md:text-sm text-[#c8baaa] mt-1 max-w-2xl">
+          <p className="text-xs md:text-sm text-[#c8baaa] mt-1 max-w-2xl leading-relaxed">
             A dificuldade Marcha da Morte pune qualquer erro de posicionamento e desativa a regeneração de vida ao meditar. Com as estratégias abaixo, Geralt se torna invencível desde as primeiras horas de jogo.
           </p>
         </div>
 
         <button
           onClick={() => onToggleTrophy('andou-pelo-caminho')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs md:text-sm font-bold border transition-all ${
+          className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs md:text-sm font-bold border transition-all ${
             isDeathMarchDone
               ? 'bg-[#162f1c] text-[#2ecc71] border-[#22502c]'
               : 'bg-[#291e12] text-[#c8a84e] border-[#5e4523] hover:border-[#c8a84e]'
@@ -77,15 +77,15 @@ export default function DeathMarchTab({ completedTrophies, onToggleTrophy }) {
         {deathMarchTips.map((tip, idx) => (
           <div
             key={idx}
-            className="bg-[#121015] border border-[#2e261e] hover:border-[#4d3d29] p-5 rounded-xl transition-all space-y-2 shadow-lg"
+            className="bg-[#121015] border border-[#2e261e] hover:border-[#4d3d29] p-5 rounded-xl transition-all space-y-2.5 shadow-lg"
           >
             <div className="flex items-center gap-2.5">
-              <span className="text-xl">{tip.icon}</span>
+              <span className="text-2xl">{tip.icon}</span>
               <h3 className="text-sm md:text-base font-bold text-[#f5ede0] font-['Cinzel',serif]">
                 {tip.title}
               </h3>
             </div>
-            <p className="text-xs text-[#b8a998] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#b8a998] leading-relaxed">
               {tip.content}
             </p>
           </div>
@@ -104,13 +104,13 @@ export default function DeathMarchTab({ completedTrophies, onToggleTrophy }) {
             <h3 className="text-lg font-bold text-[#f5ede0] font-['Cinzel',serif] mt-0.5">
               Locais de Poder em Pomar Branco (Troféu "Poder para dar e vender")
             </h3>
-            <p className="text-xs text-[#b2a493] mt-0.5">
+            <p className="text-xs sm:text-sm text-[#b2a493] mt-0.5">
               Ative os 5 sinais diferentes em sequência para desbloquear o troféu de bronze.
             </p>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs text-[#b8a998]">
+            <span className="text-xs sm:text-sm text-[#b8a998]">
               {visitedPlaces.length} de {placesOfPowerWhiteOrchard.length} descobertos
             </span>
             <button
@@ -134,13 +134,13 @@ export default function DeathMarchTab({ completedTrophies, onToggleTrophy }) {
               <div
                 key={pop.id}
                 onClick={() => togglePlace(pop.id)}
-                className={`p-3.5 rounded-xl border cursor-pointer select-none transition-all flex items-start gap-3 ${
+                className={`p-3.5 sm:p-4 rounded-xl border cursor-pointer select-none transition-all flex items-start gap-3 touch-manipulation ${
                   isChecked
                     ? 'bg-[#0f1712] border-[#22502c]'
                     : 'bg-[#141217] border-[#2a221b] hover:border-[#4d3d29]'
                 }`}
               >
-                <button className="mt-0.5 flex-shrink-0">
+                <button className="flex-shrink-0 mt-0.5">
                   {isChecked ? (
                     <div className="w-5 h-5 rounded bg-[#2ecc71] flex items-center justify-center text-[#08070a]">
                       <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />
@@ -151,16 +151,14 @@ export default function DeathMarchTab({ completedTrophies, onToggleTrophy }) {
                     </div>
                   )}
                 </button>
-
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-[#c8a84e]">Sinal {pop.sign}</span>
-                    <span className="text-[10px] text-[#7d7060]">• +1 Ponto</span>
-                  </div>
-                  <h4 className="text-xs font-semibold text-[#f0e6d6] mt-0.5">
+                  <span className="text-xs font-bold text-[#c8a84e] uppercase tracking-wider block">
+                    {pop.sign}
+                  </span>
+                  <p className="text-xs sm:text-sm font-semibold text-[#f5ede0] mt-0.5">
                     {pop.location}
-                  </h4>
-                  <p className="text-[11px] text-[#9c8e7e] mt-1">
+                  </p>
+                  <p className="text-xs text-[#9e907f] mt-1">
                     {pop.desc}
                   </p>
                 </div>

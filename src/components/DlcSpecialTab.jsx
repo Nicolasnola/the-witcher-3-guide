@@ -101,38 +101,38 @@ export default function DlcSpecialTab({ activeExpansion }) {
           No Lago Celavy, a Dama do Lago só entregará a espada mágica de prata <strong>Aerondight</strong> se Geralt provar que vive segundo o código dos cavaleiros em missões de Toussaint:
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-2">
-          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 rounded-xl space-y-1.5">
-            <span className="text-xs font-bold text-[#c0392b] uppercase">1. Compaixão</span>
-            <p className="text-xs text-[#d6c7b2]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-2">
+          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 sm:p-4 rounded-xl space-y-1.5">
+            <span className="text-xs font-bold text-[#c0392b] uppercase tracking-wide">1. Compaixão</span>
+            <p className="text-xs sm:text-sm text-[#d6c7b2] leading-relaxed">
               Poupe a vida do Shaelmaar no Coliseu de Beauclair após derrotá-lo.
             </p>
           </div>
 
-          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 rounded-xl space-y-1.5">
-            <span className="text-xs font-bold text-[#c0392b] uppercase">2. Generosidade</span>
-            <p className="text-xs text-[#d6c7b2]">
+          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 sm:p-4 rounded-xl space-y-1.5">
+            <span className="text-xs font-bold text-[#c0392b] uppercase tracking-wide">2. Generosidade</span>
+            <p className="text-xs sm:text-sm text-[#d6c7b2] leading-relaxed">
               Dê uma gorjeta de 5 moedas ao garoto que entrega a carta de Yennefer em Beauclair.
             </p>
           </div>
 
-          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 rounded-xl space-y-1.5">
-            <span className="text-xs font-bold text-[#c0392b] uppercase">3. Honra</span>
-            <p className="text-xs text-[#d6c7b2]">
+          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 sm:p-4 rounded-xl space-y-1.5">
+            <span className="text-xs font-bold text-[#c0392b] uppercase tracking-wide">3. Honra</span>
+            <p className="text-xs sm:text-sm text-[#d6c7b2] leading-relaxed">
               No Torneio dos Cavaleiros, aceite o duelo montado a cavalo contra o nobre Tailles.
             </p>
           </div>
 
-          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 rounded-xl space-y-1.5">
-            <span className="text-xs font-bold text-[#c0392b] uppercase">4. Sabedoria</span>
-            <p className="text-xs text-[#d6c7b2]">
+          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 sm:p-4 rounded-xl space-y-1.5">
+            <span className="text-xs font-bold text-[#c0392b] uppercase tracking-wide">4. Sabedoria</span>
+            <p className="text-xs sm:text-sm text-[#d6c7b2] leading-relaxed">
               Resolva corretamente o enigma no piquenique com Anna Henrietta (A Fênix/Unicórnio).
             </p>
           </div>
 
-          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 rounded-xl space-y-1.5">
-            <span className="text-xs font-bold text-[#c0392b] uppercase">5. Valentia</span>
-            <p className="text-xs text-[#d6c7b2]">
+          <div className="bg-[#1a1114] border border-[#3d191d] p-3.5 sm:p-4 rounded-xl space-y-1.5">
+            <span className="text-xs font-bold text-[#c0392b] uppercase tracking-wide">5. Valentia</span>
+            <p className="text-xs sm:text-sm text-[#d6c7b2] leading-relaxed">
               Vença a arena final do Torneio dos Cavaleiros ou mate o monstro do cemitério.
             </p>
           </div>

@@ -11,70 +11,70 @@ export default function GwentContractsTab({ completedContracts, onToggleContract
   return (
     <div className="space-y-6">
       {/* Subtab Toggle Buttons */}
-      <div className="flex flex-wrap items-center gap-2 p-1.5 bg-[#100e13] border border-[#2e261e] rounded-xl">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 bg-[#100e13] border border-[#2e261e] rounded-xl">
         <button
           onClick={() => setSubTab('contracts')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all ${
+          className={`flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-lg text-xs md:text-sm font-semibold transition-all ${
             subTab === 'contracts'
               ? 'bg-[#c8a84e] text-[#08070a] shadow-md shadow-[#c8a84e]/20'
               : 'text-[#9c8e7e] hover:bg-[#1a161f] hover:text-[#f0e6d6]'
           }`}
         >
-          <Award className="w-4 h-4" />
-          <span>Contratos de Bruxo ({completedContractsCount}/{witcherContracts.length})</span>
+          <Award className="w-4 h-4 flex-shrink-0" />
+          <span>Contratos ({completedContractsCount}/{witcherContracts.length})</span>
         </button>
 
         <button
           onClick={() => setSubTab('gwent')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all ${
+          className={`flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-lg text-xs md:text-sm font-semibold transition-all ${
             subTab === 'gwent'
               ? 'bg-[#c8a84e] text-[#08070a] shadow-md shadow-[#c8a84e]/20'
               : 'text-[#9c8e7e] hover:bg-[#1a161f] hover:text-[#f0e6d6]'
           }`}
         >
-          <BookOpen className="w-4 h-4" />
+          <BookOpen className="w-4 h-4 flex-shrink-0" />
           <span>Guia Mestre de Gwent</span>
         </button>
 
         <button
           onClick={() => setSubTab('devils_pit')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all ${
+          className={`flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-lg text-xs md:text-sm font-semibold transition-all ${
             subTab === 'devils_pit'
               ? 'bg-[#c8a84e] text-[#08070a] shadow-md shadow-[#c8a84e]/20'
               : 'text-[#9c8e7e] hover:bg-[#1a161f] hover:text-[#f0e6d6]'
           }`}
         >
-          <Target className="w-4 h-4" />
-          <span>Farm Fosso do Diabo (Devil's Pit)</span>
+          <Target className="w-4 h-4 flex-shrink-0" />
+          <span>Farm Fosso do Diabo</span>
         </button>
       </div>
 
       {/* VIEW 1: WITCHER CONTRACTS CHECKLIST */}
       {subTab === 'contracts' && (
         <div className="space-y-4">
-          <div className="bg-[#110f14] border border-[#2e261e] rounded-xl p-5 flex flex-wrap items-center justify-between gap-4">
+          <div className="bg-[#110f14] border border-[#2e261e] rounded-xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xs uppercase tracking-wider text-[#c8a84e] font-bold">
                   Troféu de Prata
                 </span>
                 <span className="text-xs text-[#8a7f72]">•</span>
-                <span className="text-xs text-[#8a7f72]">Todos os 22 Contratos Oficiais</span>
+                <span className="text-xs text-[#8a7f72]">Todos os 25 Contratos Oficiais</span>
               </div>
-              <h3 className="text-lg font-bold text-[#f5ede0] font-['Cinzel',serif] mt-0.5">
+              <h3 className="text-base sm:text-lg font-bold text-[#f5ede0] font-['Cinzel',serif] mt-0.5">
                 Geralt: O Profissional (Geralt: The Professional)
               </h3>
-              <p className="text-xs text-[#b2a493] mt-1">
+              <p className="text-xs sm:text-sm text-[#b2a493] mt-1 leading-relaxed">
                 Marque cada monstro de contrato eliminado para rastrear seu progresso até o troféu.
               </p>
             </div>
 
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <span className="text-sm font-bold text-[#f5ede0]">
+                <span className="text-xs sm:text-sm font-bold text-[#f5ede0]">
                   {completedContractsCount} de {witcherContracts.length} concluídos
                 </span>
-                <div className="w-32 bg-[#1e1916] h-2 rounded-full mt-1.5 overflow-hidden">
+                <div className="w-28 sm:w-32 bg-[#1e1916] h-2 rounded-full mt-1.5 overflow-hidden">
                   <div
                     className="h-full bg-[#c8a84e] transition-all duration-300"
                     style={{ width: `${(completedContractsCount / witcherContracts.length) * 100}%` }}
@@ -84,7 +84,7 @@ export default function GwentContractsTab({ completedContracts, onToggleContract
 
               <button
                 onClick={() => onToggleTrophy('geralt-profissional')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                className={`px-3.5 py-2 rounded-lg text-xs font-semibold border transition-all ${
                   isProfessionalDone
                     ? 'bg-[#15271a] text-[#2ecc71] border-[#22502c]'
                     : 'bg-[#211a14] text-[#c8a84e] border-[#423321] hover:border-[#c8a84e]'
@@ -103,35 +103,35 @@ export default function GwentContractsTab({ completedContracts, onToggleContract
                 <div
                   key={contract.id}
                   onClick={() => onToggleContract(contract.id)}
-                  className={`p-3.5 rounded-xl border flex items-center justify-between gap-3 cursor-pointer select-none transition-all ${
+                  className={`p-3.5 sm:p-4 rounded-xl border flex items-center justify-between gap-3 cursor-pointer select-none transition-all touch-manipulation ${
                     isChecked
                       ? 'bg-[#0f1712] border-[#22502c] opacity-75'
                       : 'bg-[#121015] border-[#2e261e] hover:border-[#4d3d29]'
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                    <button className="flex-shrink-0">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <button className="flex-shrink-0 p-1 -m-1 focus:outline-none">
                       {isChecked ? (
-                        <div className="w-5 h-5 rounded bg-[#2ecc71] flex items-center justify-center text-[#08070a]">
-                          <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />
+                        <div className="w-6 h-6 sm:w-5 sm:h-5 rounded-md bg-[#2ecc71] flex items-center justify-center text-[#08070a] shadow-md shadow-[#2ecc71]/20">
+                          <CheckCircle2 className="w-4 h-4 sm:w-3.5 sm:h-3.5 stroke-[3]" />
                         </div>
                       ) : (
-                        <div className="w-5 h-5 rounded border-2 border-[#544331] hover:border-[#c8a84e] bg-[#08070a] flex items-center justify-center">
-                          <Circle className="w-2.5 h-2.5 text-transparent hover:text-[#c8a84e]/30" />
+                        <div className="w-6 h-6 sm:w-5 sm:h-5 rounded-md border-2 border-[#544331] hover:border-[#c8a84e] bg-[#08070a] flex items-center justify-center">
+                          <Circle className="w-3 h-3 sm:w-2.5 sm:h-2.5 text-transparent hover:text-[#c8a84e]/30" />
                         </div>
                       )}
                     </button>
-                    <div>
-                      <h4 className={`text-sm font-bold ${isChecked ? 'line-through text-[#6e8574]' : 'text-[#f5ede0]'}`}>
+                    <div className="min-w-0">
+                      <h4 className={`text-sm sm:text-base font-bold truncate ${isChecked ? 'line-through text-[#6e8574]' : 'text-[#f5ede0]'}`}>
                         {contract.name}
                       </h4>
-                      <p className="text-xs text-[#9c8e7e]">
+                      <p className="text-xs sm:text-sm text-[#9c8e7e]">
                         {contract.region} • <span className="text-[#c8a84e] font-semibold">Nível {contract.level}</span>
                       </p>
                     </div>
                   </div>
 
-                  <span className="text-xs px-2 py-0.5 rounded bg-[#1e1916] text-[#b8a998] border border-[#362b20] flex-shrink-0">
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-[#1e1916] text-[#b8a998] border border-[#362b20] flex-shrink-0 font-medium">
                     {contract.monster}
                   </span>
                 </div>

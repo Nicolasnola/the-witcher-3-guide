@@ -406,35 +406,35 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#08070a] text-[#e8e2d8] selection:bg-[#c8a84e] selection:text-[#08070a]">
       {/* Top Banner Navigation Bar */}
-      <header className="sticky top-0 z-40 bg-[#0d0a0f]/95 backdrop-blur-md border-b border-[#2e261e] shadow-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+      <header className="sticky top-0 z-40 bg-[#0d0a0f]/95 backdrop-blur-md border-b border-[#2e261e] shadow-xl w-full">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+          <div className="flex items-center justify-between h-16 gap-2 w-full">
             {/* Logo / Brand */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <div
-                className="w-9 h-9 rounded-lg p-0.5 flex items-center justify-center shadow-lg transition-all"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg p-0.5 flex items-center justify-center shadow-lg transition-all"
                 style={{
                   background: `linear-gradient(135deg, ${currentConfig.info.accentColor || '#c8a84e'}, #3d2410)`,
                   boxShadow: `0 2px 10px ${currentConfig.info.accentColor || '#c8a84e'}44`,
                 }}
               >
-                <div className="w-full h-full bg-[#0a080d] rounded-[6px] flex items-center justify-center font-['Cinzel',serif] font-black text-[#f5ede0] text-sm">
+                <div className="w-full h-full bg-[#0a080d] rounded-[6px] flex items-center justify-center font-['Cinzel',serif] font-black text-[#f5ede0] text-sm sm:text-base">
                   W
                 </div>
               </div>
-              <div className="hidden sm:block">
-                <span className="font-['Cinzel',serif] font-bold text-sm text-[#f5ede0] tracking-wider block">
-                  THE WITCHER 3 COMPLETO
+              <div>
+                <span className="font-['Cinzel',serif] font-bold text-xs sm:text-sm md:text-base text-[#f5ede0] tracking-wider block truncate max-w-[150px] xs:max-w-[200px] sm:max-w-none">
+                  WITCHER 3 PLATINA
                 </span>
-                <span className="text-[10px] text-[#8e8270] tracking-widest uppercase block -mt-0.5">
-                  Jogo Base + Hearts of Stone + Blood & Wine
+                <span className="text-[11px] sm:text-xs text-[#8e8270] tracking-widest uppercase block -mt-0.5">
+                  100% Guia Definitivo
                 </span>
               </div>
             </div>
 
-            {/* Interactive Witcher Signs Bar */}
-            <div className="flex items-center gap-1 sm:gap-2 bg-[#120f15] border border-[#2a221a] px-2 py-1 rounded-full shadow-inner">
-              <span className="text-[10px] font-bold text-[#8a7f72] uppercase tracking-wider mr-1 hidden md:inline">
+            {/* Interactive Witcher Signs Bar (Desktop) */}
+            <div className="hidden md:flex items-center gap-1.5 bg-[#120f15] border border-[#2a221a] px-2.5 py-1 rounded-full shadow-inner">
+              <span className="text-xs font-bold text-[#8a7f72] uppercase tracking-wider mr-1">
                 Sinais:
               </span>
               {signs.map((sign) => {
@@ -446,7 +446,7 @@ export default function App() {
                     key={sign.name}
                     onClick={() => setActiveSign(isSelected ? null : sign.name)}
                     title={`${sign.name}: ${sign.flavor}`}
-                    className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold transition-all ${
+                    className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
                       isSelected ? 'shadow-lg' : 'text-[#8a7f72] hover:text-[#f0e6d6]'
                     }`}
                     style={{
@@ -455,47 +455,77 @@ export default function App() {
                       boxShadow: isSelected ? `0 0 10px ${sign.color}66` : undefined,
                     }}
                   >
-                    <IconComponent className="w-3 h-3" />
-                    <span className="hidden sm:inline">{sign.name}</span>
+                    <IconComponent className="w-3.5 h-3.5" />
+                    <span>{sign.name}</span>
                   </button>
                 );
               })}
             </div>
 
             {/* Actions & PWA Install Button */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-shrink-0">
               <button
                 id="pwa-install-btn"
                 onClick={handleInstallClick}
                 title="Instalar no celular (Android / iOS)"
-                className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#2a1c12] to-[#1a121f] hover:from-[#3d2719] hover:to-[#281b30] text-[#c8a84e] border border-[#594228] text-xs font-bold transition-all hover:scale-105 shadow-md shadow-[#c8a84e]/10 active:scale-95"
+                className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#2a1c12] to-[#1a121f] hover:from-[#3d2719] hover:to-[#281b30] text-[#c8a84e] border border-[#594228] text-xs sm:text-sm font-bold transition-all hover:scale-105 shadow-md shadow-[#c8a84e]/10 active:scale-95 min-h-[36px]"
               >
-                <Smartphone className="w-3.5 h-3.5 text-[#c8a84e]" />
-                <span className="hidden sm:inline">{isInstalled ? 'App Instalado' : 'Instalar App'}</span>
-                <span className="sm:hidden">{isInstalled ? 'App' : 'Instalar'}</span>
+                <Smartphone className="w-4 h-4 text-[#c8a84e] flex-shrink-0" />
+                <span>{isInstalled ? 'App Pronto' : 'Instalar'}</span>
               </button>
 
               {/* Global Total Mastery Pill */}
               <div
-                className="px-3 py-1 rounded-full bg-[#18141b] border border-[#362b20] text-xs font-semibold flex items-center gap-1.5 shadow-sm"
+                className="px-2.5 sm:px-3 py-1.5 rounded-full bg-[#18141b] border border-[#362b20] text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-sm min-h-[36px]"
                 title={`Progresso Geral da Franquia: ${totalMastery} de ${totalAvailable} Conquistas`}
               >
-                <Award className="w-3.5 h-3.5 text-[#c8a84e]" />
-                <span className="text-[#f5ede0] font-mono">
+                <Award className="w-4 h-4 text-[#c8a84e] flex-shrink-0" />
+                <span className="text-[#f5ede0] font-mono font-bold">
                   {totalMastery}/{totalAvailable}
                 </span>
-                <span className="text-[10px] text-[#c8a84e] font-bold hidden sm:inline">
+                <span className="text-xs text-[#c8a84e] font-bold hidden sm:inline">
                   ({grandPercentage}%)
                 </span>
               </div>
+            </div>
+          </div>
+
+          {/* Mobile Witcher Signs Sub-bar */}
+          <div className="md:hidden flex items-center justify-between gap-1 overflow-x-auto no-scrollbar py-1.5 border-t border-[#231b15]">
+            <span className="text-[11px] font-bold text-[#8a7f72] uppercase tracking-wider pl-1">
+              Sinais:
+            </span>
+            <div className="flex items-center gap-1">
+              {signs.map((sign) => {
+                const IconComponent = sign.icon;
+                const isSelected = activeSign === sign.name;
+
+                return (
+                  <button
+                    key={sign.name}
+                    onClick={() => setActiveSign(isSelected ? null : sign.name)}
+                    className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
+                      isSelected ? 'shadow-lg' : 'text-[#8a7f72] bg-[#141017]'
+                    }`}
+                    style={{
+                      color: isSelected ? sign.color : undefined,
+                      backgroundColor: isSelected ? `${sign.color}25` : undefined,
+                      boxShadow: isSelected ? `0 0 8px ${sign.color}66` : undefined,
+                    }}
+                  >
+                    <IconComponent className="w-3.5 h-3.5" />
+                    <span>{sign.name}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
 
         {/* Sign Flavor Notification Bar (when clicked) */}
         {activeSign && (
-          <div className="bg-[#141018] border-t border-[#292019] px-4 py-1 text-center text-xs text-[#c8a84e] animate-fade-in flex items-center justify-center gap-2">
-            <Sparkles className="w-3 h-3 animate-spin" />
+          <div className="bg-[#141018] border-t border-[#292019] px-4 py-1.5 text-center text-xs sm:text-sm text-[#c8a84e] animate-fade-in flex items-center justify-center gap-2">
+            <Sparkles className="w-3.5 h-3.5 animate-spin flex-shrink-0" />
             <span>
               <strong>Sinal {activeSign}:</strong>{' '}
               {signs.find((s) => s.name === activeSign)?.flavor}
@@ -505,34 +535,34 @@ export default function App() {
       </header>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 md:py-8 w-full">
         {/* ======================================================= */}
         {/* TOP LEVEL SELECTOR: JOGO BASE vs HEARTS OF STONE vs BLOOD AND WINE */}
         {/* ======================================================= */}
-        <div className="mb-6 bg-[#100e13] border border-[#2e261e] p-2 rounded-2xl shadow-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-          <div className="flex items-center gap-2 px-2 text-xs font-semibold text-[#8a7f72] uppercase tracking-wider">
-            <Layers className="w-4 h-4 text-[#c8a84e]" />
+        <div className="mb-6 bg-[#100e13] border border-[#2e261e] p-2.5 sm:p-3 rounded-2xl shadow-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 w-full">
+          <div className="flex items-center gap-2 px-1 text-xs sm:text-sm font-semibold text-[#8a7f72] uppercase tracking-wider">
+            <Layers className="w-4 h-4 text-[#c8a84e] flex-shrink-0" />
             <span>Selecione a Campanha / Nível:</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 flex-1 max-w-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 flex-1 max-w-2xl w-full">
             {/* Base Game Level */}
             <button
               onClick={() => {
                 setActiveExpansion('base');
                 setActiveTab('roadmap');
               }}
-              className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`flex items-center justify-between sm:justify-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeExpansion === 'base'
-                  ? 'bg-[#c8a84e] text-[#08070a] shadow-lg shadow-[#c8a84e]/20 scale-[1.02]'
+                  ? 'bg-[#c8a84e] text-[#08070a] shadow-lg shadow-[#c8a84e]/20 scale-[1.01]'
                   : 'bg-[#151218] text-[#a49683] hover:bg-[#201a24] hover:text-[#f0e6d6] border border-[#33271c]'
               }`}
             >
-              <span>🐺 Jogo Base</span>
+              <span className="flex items-center gap-1.5">🐺 Jogo Base</span>
               <span
-                className={`text-[11px] px-1.5 py-0.2 rounded ${
+                className={`text-xs px-2 py-0.5 rounded font-bold ${
                   activeExpansion === 'base'
-                    ? 'bg-[#08070a]/20 text-[#08070a]'
+                    ? 'bg-[#08070a]/25 text-[#08070a]'
                     : 'bg-[#241c14] text-[#c8a84e]'
                 }`}
               >
@@ -546,17 +576,17 @@ export default function App() {
                 setActiveExpansion('hos');
                 setActiveTab('roadmap');
               }}
-              className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`flex items-center justify-between sm:justify-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeExpansion === 'hos'
-                  ? 'bg-[#e67e22] text-[#08070a] shadow-lg shadow-[#e67e22]/20 scale-[1.02]'
+                  ? 'bg-[#e67e22] text-[#08070a] shadow-lg shadow-[#e67e22]/20 scale-[1.01]'
                   : 'bg-[#151218] text-[#a49683] hover:bg-[#201a24] hover:text-[#f0e6d6] border border-[#33271c]'
               }`}
             >
-              <span>🪓 Hearts of Stone</span>
+              <span className="flex items-center gap-1.5">🪓 Hearts of Stone</span>
               <span
-                className={`text-[11px] px-1.5 py-0.2 rounded ${
+                className={`text-xs px-2 py-0.5 rounded font-bold ${
                   activeExpansion === 'hos'
-                    ? 'bg-[#08070a]/20 text-[#08070a]'
+                    ? 'bg-[#08070a]/25 text-[#08070a]'
                     : 'bg-[#29160a] text-[#e67e22]'
                 }`}
               >
@@ -570,15 +600,15 @@ export default function App() {
                 setActiveExpansion('bw');
                 setActiveTab('roadmap');
               }}
-              className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`flex items-center justify-between sm:justify-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeExpansion === 'bw'
-                  ? 'bg-[#c0392b] text-white shadow-lg shadow-[#c0392b]/30 scale-[1.02]'
+                  ? 'bg-[#c0392b] text-white shadow-lg shadow-[#c0392b]/30 scale-[1.01]'
                   : 'bg-[#151218] text-[#a49683] hover:bg-[#201a24] hover:text-[#f0e6d6] border border-[#33271c]'
               }`}
             >
-              <span>🍷 Blood & Wine</span>
+              <span className="flex items-center gap-1.5">🍷 Blood & Wine</span>
               <span
-                className={`text-[11px] px-1.5 py-0.2 rounded ${
+                className={`text-xs px-2 py-0.5 rounded font-bold ${
                   activeExpansion === 'bw'
                     ? 'bg-[#08070a]/30 text-white'
                     : 'bg-[#290d10] text-[#e74c3c]'
@@ -602,10 +632,10 @@ export default function App() {
         />
 
         {/* Tab Navigation Menu for Active Level */}
-        <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2 mb-6 border-b border-[#26201a]">
+        <div className="flex overflow-x-auto no-scrollbar gap-2.5 pb-2.5 mb-6 border-b border-[#26201a] overscroll-x-contain touch-pan-x w-full">
           <button
             onClick={() => setActiveTab('roadmap')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
+            className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 ${
               activeTab === 'roadmap'
                 ? 'shadow-lg'
                 : 'bg-[#120f15] text-[#9c8e7e] hover:bg-[#1a1620] hover:text-[#f0e6d6] border border-[#2a221a]'
@@ -615,13 +645,13 @@ export default function App() {
               color: activeTab === 'roadmap' ? '#08070a' : undefined,
             }}
           >
-            <Compass className="w-4 h-4" />
+            <Compass className="w-4 h-4 flex-shrink-0" />
             <span>🗺️ Roteiro Passo a Passo</span>
           </button>
 
           <button
             onClick={() => setActiveTab('trophies')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
+            className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 ${
               activeTab === 'trophies'
                 ? 'shadow-lg'
                 : 'bg-[#120f15] text-[#9c8e7e] hover:bg-[#1a1620] hover:text-[#f0e6d6] border border-[#2a221a]'
@@ -631,19 +661,19 @@ export default function App() {
               color: activeTab === 'trophies' ? '#08070a' : undefined,
             }}
           >
-            <Trophy className="w-4 h-4" />
+            <Trophy className="w-4 h-4 flex-shrink-0" />
             <span>🏆 Todos os Troféus ({currentConfig.trophies.length})</span>
           </button>
 
           <button
             onClick={() => setActiveTab('missables')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
+            className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 ${
               activeTab === 'missables'
                 ? 'bg-[#e74c3c] text-white shadow-lg shadow-[#e74c3c]/30'
                 : 'bg-[#181012] text-[#e74c3c] hover:bg-[#251316] border border-[#4d1f22]'
             }`}
           >
-            <AlertTriangle className="w-4 h-4" />
+            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
             <span>⚠️ Avisos & Perdíveis ({currentConfig.missables.length})</span>
           </button>
 
@@ -652,25 +682,25 @@ export default function App() {
             <>
               <button
                 onClick={() => setActiveTab('gwent')}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 ${
                   activeTab === 'gwent'
                     ? 'bg-[#c8a84e] text-[#08070a] shadow-lg shadow-[#c8a84e]/20'
                     : 'bg-[#120f15] text-[#9c8e7e] hover:bg-[#1a1620] hover:text-[#f0e6d6] border border-[#2a221a]'
                 }`}
               >
-                <BookOpen className="w-4 h-4" />
+                <BookOpen className="w-4 h-4 flex-shrink-0" />
                 <span>🃏 Gwent & Contratos</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('deathmarch')}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 ${
                   activeTab === 'deathmarch'
                     ? 'bg-[#c8a84e] text-[#08070a] shadow-lg shadow-[#c8a84e]/20'
                     : 'bg-[#120f15] text-[#9c8e7e] hover:bg-[#1a1620] hover:text-[#f0e6d6] border border-[#2a221a]'
                 }`}
               >
-                <Shield className="w-4 h-4" />
+                <Shield className="w-4 h-4 flex-shrink-0" />
                 <span>⚔️ Marcha da Morte & Builds</span>
               </button>
             </>
@@ -680,7 +710,7 @@ export default function App() {
           {activeExpansion !== 'base' && (
             <button
               onClick={() => setActiveTab('special')}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
+              className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 ${
                 activeTab === 'special'
                   ? 'shadow-lg'
                   : 'bg-[#120f15] text-[#9c8e7e] hover:bg-[#1a1620] hover:text-[#f0e6d6] border border-[#2a221a]'
@@ -690,7 +720,7 @@ export default function App() {
                 color: activeTab === 'special' ? (activeExpansion === 'bw' ? '#fff' : '#08070a') : undefined,
               }}
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 flex-shrink-0" />
               <span>
                 {activeExpansion === 'hos'
                   ? '🔮 Encantador de Palavras & Gwent'

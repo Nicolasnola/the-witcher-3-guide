@@ -90,7 +90,7 @@ export default function RoadmapTab({
               {/* Section Header */}
               <div className="p-4 md:p-5 bg-gradient-to-r from-[#17141b] via-[#120f16] to-[#17141b] border-b border-[#241d17] flex flex-wrap items-center justify-between gap-3">
                 <div
-                  className="flex items-center gap-3 cursor-pointer select-none flex-1 min-w-[240px]"
+                  className="flex items-center gap-3 cursor-pointer select-none flex-1 min-w-[200px]"
                   onClick={() => toggleSection(section.id)}
                 >
                   <div className={`p-1.5 rounded-lg bg-[#221c16] text-[#c8a84e] transform transition-transform ${isExpanded ? 'rotate-90' : ''}`}>
@@ -101,7 +101,7 @@ export default function RoadmapTab({
                       <span className="text-xs uppercase tracking-wider text-[#c8a84e] font-bold">
                         {section.region}
                       </span>
-                      <span className="px-2 py-0.2 rounded text-[10px] bg-[#292018] text-[#a89b88] border border-[#443324]">
+                      <span className="px-2 py-0.5 rounded text-xs bg-[#292018] text-[#c0b2a2] border border-[#443324] font-medium">
                         {section.badge}
                       </span>
                     </div>
@@ -112,12 +112,12 @@ export default function RoadmapTab({
                 </div>
 
                 {/* Progress & Section Actions */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <div className="text-right">
                     <span className="text-xs font-bold text-[#e0d6c7]">
                       {done} / {total} passos
                     </span>
-                    <div className="w-24 bg-[#1e1916] h-1.5 rounded-full mt-1 overflow-hidden">
+                    <div className="w-20 sm:w-24 bg-[#1e1916] h-2 rounded-full mt-1 overflow-hidden">
                       <div
                         className="h-full bg-[#c8a84e] transition-all duration-300"
                         style={{ width: `${percent}%` }}
@@ -128,9 +128,9 @@ export default function RoadmapTab({
                   <button
                     onClick={() => onCompleteSection(section.id, section.steps.map((s) => s.id))}
                     title="Marcar todos os passos desta seção"
-                    className="flex items-center gap-1 px-2.5 py-1 rounded text-xs bg-[#1f1a16] hover:bg-[#2d241c] text-[#c8a84e] border border-[#3e3020] transition-all"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-[#1f1a16] hover:bg-[#2d241c] text-[#c8a84e] border border-[#3e3020] transition-all font-semibold"
                   >
-                    <CheckSquare className="w-3.5 h-3.5" />
+                    <CheckSquare className="w-4 h-4" />
                     <span className="hidden sm:inline">Completar Seção</span>
                   </button>
                 </div>
@@ -146,43 +146,43 @@ export default function RoadmapTab({
                     return (
                       <div
                         key={step.id}
-                        className={`pt-4 first:pt-0 flex items-start gap-3.5 transition-all ${
+                        className={`pt-4 first:pt-0 flex items-start gap-3 sm:gap-3.5 transition-all ${
                           isStepDone ? 'opacity-60' : ''
                         }`}
                       >
-                        {/* Step Checkbox */}
+                        {/* Step Checkbox - Enhanced touch target on mobile */}
                         <button
                           onClick={() => onToggleStep(step.id)}
-                          className="mt-1 flex-shrink-0 transition-transform active:scale-90"
+                          className="mt-0.5 flex-shrink-0 transition-transform active:scale-90 p-1 -m-1 touch-manipulation focus:outline-none"
                           title={isStepDone ? 'Desmarcar passo' : 'Marcar passo como concluído'}
                         >
                           {isStepDone ? (
-                            <div className="w-5 h-5 rounded bg-[#2ecc71] flex items-center justify-center text-[#08070a]">
-                              <CheckCircle className="w-3.5 h-3.5 stroke-[3]" />
+                            <div className="w-6 h-6 sm:w-5 sm:h-5 rounded-md bg-[#2ecc71] flex items-center justify-center text-[#08070a] shadow-md shadow-[#2ecc71]/20">
+                              <CheckCircle className="w-4 h-4 sm:w-3.5 sm:h-3.5 stroke-[3]" />
                             </div>
                           ) : (
-                            <div className="w-5 h-5 rounded border-2 border-[#544331] hover:border-[#c8a84e] bg-[#08070a] flex items-center justify-center">
-                              <Circle className="w-2.5 h-2.5 text-transparent hover:text-[#c8a84e]/30" />
+                            <div className="w-6 h-6 sm:w-5 sm:h-5 rounded-md border-2 border-[#544331] hover:border-[#c8a84e] bg-[#08070a] flex items-center justify-center">
+                              <Circle className="w-3 h-3 sm:w-2.5 sm:h-2.5 text-transparent hover:text-[#c8a84e]/30" />
                             </div>
                           )}
                         </button>
 
                         {/* Step Content */}
                         <div className="flex-1 min-w-0">
-                          <div className="flex flex-wrap items-center gap-2 mb-1">
-                            <span className="text-xs font-mono text-[#8a7f72]">
+                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+                            <span className="text-xs font-mono text-[#9e9182] font-semibold">
                               Passo {idx + 1}
                             </span>
                             {step.missable && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold text-[#e74c3c] bg-[#361313] border border-[#582121]">
-                                <AlertTriangle className="w-3 h-3" /> PERDÍVEL CRÍTICO
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold text-[#e74c3c] bg-[#361313] border border-[#582121]">
+                                <AlertTriangle className="w-3.5 h-3.5" /> PERDÍVEL CRÍTICO
                               </span>
                             )}
                             {step.trophyRef && (
                               <button
                                 onClick={() => onToggleTrophy(step.trophyRef)}
                                 title="Clique para sincronizar o status deste troféu"
-                                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium border transition-all ${
+                                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold border transition-all ${
                                   isTrophyDone
                                     ? 'bg-[#142618] text-[#2ecc71] border-[#22502c]'
                                     : 'bg-[#211a14] text-[#c8a84e] border-[#423321] hover:border-[#c8a84e]'
@@ -200,7 +200,7 @@ export default function RoadmapTab({
                           >
                             {step.title}
                           </h3>
-                          <p className="text-xs md:text-sm text-[#b2a493] mt-1 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-[#b8a998] mt-1 leading-relaxed">
                             {step.desc}
                           </p>
                         </div>

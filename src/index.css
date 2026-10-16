@@ -66,14 +66,27 @@
   border-radius: 3px;
 }
 
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  width: 100%;
   background-color: var(--color-witcher-dark);
   color: var(--color-witcher-text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
 }
 
 /* Witcher-style ornamental borders */
@@ -281,11 +294,23 @@ button, a, input, select {
 
 @media (max-width: 768px) {
   .custom-checkbox {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
   }
+  
+  /* Impede zoom automático do iOS em inputs menores que 16px */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
   body {
-    padding-bottom: env(safe-area-inset-bottom, 16px);
+    padding-bottom: env(safe-area-inset-bottom, 24px);
+  }
+  
+  /* Garante que nenhum container exceda a largura da tela */
+  * {
+    max-width: 100vw;
   }
 }
 

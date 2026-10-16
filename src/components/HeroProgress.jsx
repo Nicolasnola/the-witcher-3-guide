@@ -78,10 +78,10 @@ export default function HeroProgress({
 
       <div className="relative z-10">
         {/* Top Badges & Actions */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#26201a]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#26201a]">
           <div className="flex items-center gap-3">
             <div
-              className="w-12 h-12 rounded-xl p-0.5 shadow-lg flex items-center justify-center transition-all"
+              className="w-12 h-12 rounded-xl p-0.5 shadow-lg flex items-center justify-center transition-all flex-shrink-0"
               style={{
                 background: `linear-gradient(135deg, ${expansionInfo.accentColor || '#c8a84e'}, #3d2410)`,
                 boxShadow: `0 4px 14px ${expansionInfo.accentColor || '#c8a84e'}44`,
@@ -96,52 +96,52 @@ export default function HeroProgress({
             </div>
             <div>
               <span
-                className="text-xs uppercase tracking-[0.2em] font-semibold flex items-center gap-1.5"
+                className="text-xs sm:text-sm uppercase tracking-wider font-semibold flex items-center gap-1.5"
                 style={{ color: expansionInfo.accentColor || '#c8a84e' }}
               >
-                <Sparkles className="w-3.5 h-3.5" /> {expansionInfo.badge} • 100% Guia de Conquistas
+                <Sparkles className="w-4 h-4 flex-shrink-0" /> {expansionInfo.badge} • 100% Guia
               </span>
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-[#f3ede2] font-['Cinzel',serif]">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#f3ede2] font-['Cinzel',serif]">
                 {expansionInfo.title}
               </h1>
-              <span className="text-xs text-[#9e9180] hidden sm:block -mt-0.5">
+              <span className="text-xs sm:text-sm text-[#9e9180] hidden sm:block -mt-0.5">
                 {expansionInfo.subtitle}
               </span>
             </div>
           </div>
 
-          {/* Action buttons */}
-          <div className="flex flex-wrap items-center gap-2">
+          {/* Action buttons - Mobile Touch Friendly Grid */}
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 w-full sm:w-auto">
             <button
               onClick={onMarkAll}
               title="Marcar todos desta expansão como conquistados"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#1e1a16] hover:bg-[#2c241c] text-[#d6c7b2] border border-[#4a3b2c] transition-all hover:scale-105"
+              className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#1e1a16] hover:bg-[#2c241c] text-[#d6c7b2] border border-[#4a3b2c] transition-all hover:scale-102 active:scale-95 min-h-[40px]"
             >
-              <CheckSquare className="w-3.5 h-3.5 text-[#c8a84e]" />
-              <span className="hidden sm:inline">Marcar</span> Todos
+              <CheckSquare className="w-4 h-4 text-[#c8a84e] flex-shrink-0" />
+              <span>Marcar Todos</span>
             </button>
             <button
               onClick={onReset}
               title="Zerar progresso desta expansão"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#1e1414] hover:bg-[#341818] text-[#e74c3c] border border-[#522020] transition-all hover:scale-105"
+              className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#1e1414] hover:bg-[#341818] text-[#e74c3c] border border-[#522020] transition-all hover:scale-102 active:scale-95 min-h-[40px]"
             >
-              <RefreshCw className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Zerar</span> Expansão
+              <RefreshCw className="w-4 h-4 flex-shrink-0" />
+              <span>Zerar Nível</span>
             </button>
             <button
               onClick={onExport}
               title="Exportar progresso geral (JSON)"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#131b1d] hover:bg-[#1a282c] text-[#68d8d6] border border-[#1e464c] transition-all hover:scale-105"
+              className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#131b1d] hover:bg-[#1a282c] text-[#68d8d6] border border-[#1e464c] transition-all hover:scale-102 active:scale-95 min-h-[40px]"
             >
-              <Download className="w-3.5 h-3.5" />
-              Exportar
+              <Download className="w-4 h-4 flex-shrink-0" />
+              <span>Exportar</span>
             </button>
             <label
               title="Importar progresso geral (JSON)"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#171422] hover:bg-[#241d38] text-[#b39ddb] border border-[#3e305e] transition-all hover:scale-105 cursor-pointer"
+              className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#171422] hover:bg-[#241d38] text-[#b39ddb] border border-[#3e305e] transition-all hover:scale-102 active:scale-95 cursor-pointer min-h-[40px]"
             >
-              <Upload className="w-3.5 h-3.5" />
-              Importar
+              <Upload className="w-4 h-4 flex-shrink-0" />
+              <span>Importar</span>
               <input type="file" accept=".json" onChange={onImport} className="hidden" />
             </label>
           </div>
@@ -150,7 +150,7 @@ export default function HeroProgress({
         {/* Big Progress Meter */}
         <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-4 flex items-center gap-5">
-            <div className="relative w-24 h-24 flex-shrink-0 flex items-center justify-center">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 flex items-center justify-center">
               <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                 <circle
                   cx="50"
@@ -174,57 +174,57 @@ export default function HeroProgress({
                 />
               </svg>
               <div className="absolute flex flex-col items-center justify-center">
-                <span className="text-2xl font-black text-[#f3ede2] font-mono leading-none">
+                <span className="text-2xl sm:text-3xl font-black text-[#f3ede2] font-mono leading-none">
                   {percentage}%
                 </span>
-                <span className="text-[10px] uppercase tracking-wider text-[#a89b88] mt-0.5">
-                  Concluído
+                <span className="text-xs uppercase tracking-wider text-[#a89b88] mt-1 font-semibold">
+                  Feito
                 </span>
               </div>
             </div>
 
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-bold text-[#f3ede2]">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-lg sm:text-xl font-bold text-[#f3ede2]">
                   {completedCount}{' '}
                   <span className="text-sm font-normal text-[#8e8270]">/ {totalCount} Troféus</span>
                 </span>
                 {percentage === 100 && (
                   <span
-                    className="px-2 py-0.5 rounded text-[11px] font-bold text-[#08070a] shadow-lg"
+                    className="px-2 py-0.5 rounded text-xs font-bold text-[#08070a] shadow-lg"
                     style={{ backgroundColor: expansionInfo.accentColor || '#c8a84e' }}
                   >
-                    100% FEITO!
+                    100% PLATINADO!
                   </span>
                 )}
               </div>
-              <p className="text-xs text-[#a89b88] mt-1">
-                ⚠️ Perdíveis: <span className="text-[#e74c3c] font-semibold">{missablesCompleted}/{missables.length}</span> concluídos
+              <p className="text-xs sm:text-sm text-[#a89b88] mt-1.5">
+                ⚠️ Perdíveis: <span className="text-[#e74c3c] font-bold">{missablesCompleted}/{missables.length}</span>
               </p>
-              <p className="text-[11px] text-[#706657] mt-0.5">
-                Progresso salvo automaticamente no navegador
+              <p className="text-xs text-[#706657] mt-0.5">
+                Salvo automaticamente no navegador
               </p>
             </div>
           </div>
 
           {/* Rarity Counter Grid */}
-          <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
             {activeRarities.map((r) => (
               <div
                 key={r.label}
-                className="bg-[#121015]/80 border border-[#2b241c] hover:border-[#4a3e2c] p-3 rounded-xl transition-all"
+                className="bg-[#121015]/80 border border-[#2b241c] hover:border-[#4a3e2c] p-3 sm:p-3.5 rounded-xl transition-all"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-base">{r.icon}</span>
-                  <span className="text-xs font-medium text-[#8a7f72]">{r.label}</span>
+                  <span className="text-lg sm:text-xl">{r.icon}</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[#8a7f72]">{r.label}</span>
                 </div>
                 <div className="mt-2 flex items-baseline justify-between">
-                  <span className="text-lg font-bold text-[#f3ede2]" style={{ color: r.color }}>
+                  <span className="text-xl sm:text-2xl font-bold text-[#f3ede2]" style={{ color: r.color }}>
                     {r.completed}
                   </span>
-                  <span className="text-xs text-[#6e6355]">/ {r.total}</span>
+                  <span className="text-xs sm:text-sm text-[#7a6f62]">/ {r.total}</span>
                 </div>
-                <div className="w-full bg-[#1e1a16] h-1.5 rounded-full mt-2 overflow-hidden">
+                <div className="w-full bg-[#1e1a16] h-2 rounded-full mt-2.5 overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-500"
                     style={{
